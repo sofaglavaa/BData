@@ -16,7 +16,7 @@ select * from nameOfClothes;
 SELECT *from посетитель
 WHERE `возраст` = 45 AND `рост`= 164;
 
-CREATE INDEX idx_age_client ON посетитель(возраст);
+CREATE INDEX idx_age_client ON посетитель(возраст, рост);
 
 SELECT *from кража
 WHERE время = "11:28:15";
@@ -38,17 +38,17 @@ AS SELECT * FROM должность WHERE `Обязанности` LIKE 'Р%';
 select *from duties;
 
 -- ПРОЦЕДУРЫ
--- 1
+-- 1 -- Вывести всех клиентов заданного сотрудника добавиь джоин и выводить возраст посетителя
 DELIMITER //
-CREATE PROCEDURE workerClient() 
+CREATE PROCEDURE pseWorker() 
 BEGIN 
-	SELECT  `id сотрудника`,`id посетителя`
-    FROM `обслуживание посетителя сотрудником`
-    JOIN `сотрудник` ON сотрудник.id = `обслуживание посетителя сотрудником`.`id сотрудника`
-    WHERE сотрудник.id>3;
+	SELECT  `ФИО`, `возраст`
+    FROM `обслуживание посетителя сотрудником` 
+    JOIN `сотрудник` ON `обслуживание посетителя сотрудником`.`id сотрудника` = сотрудник.id
+    JOIN `посетитель` ON `обслуживание посетителя сотрудником`.`id посетителя` = посетитель.id;
 END //
 DELIMITER ;
-CALL workerClient();
+CALL pseWorker();
 -- 2
 DELIMITER //
 CREATE PROCEDURE maximumPrize(OUT оклад INT)
@@ -64,7 +64,7 @@ SELECT @MaxSalary;
 
 select MAX(оклад)  AS `@MaxSalary`
 from должность;
--- 3
+-- 3 использовать параметр по цвету
 DELIMITER //
 CREATE PROCEDURE productAndType()
 BEGIN
@@ -75,7 +75,7 @@ END //
 CALL productAndType
 
 -- ФУНКЦИИ
--- 1
+-- 1 
 DELIMITER $$ 
 CREATE FUNCTION prize (
 	prize INT
@@ -101,19 +101,20 @@ FROM specialist;
 -- 2
 
 DELIMITER $$ 
-CREATE FUNCTION typeClothes (Тип varchar(100))
-RETURNS varchar(100)
+CREATE FUNCTION SizeCloth (Размер int)
+RETURNS VARCHAR(100)
 DETERMINISTIC
 BEGIN 
 	DECLARE correct VARCHAR(100); 
-    IF Тип LIKE  "Шорты" THEN SET correct ='Это шорты'; 
-ELSE SET correct='Это не шорты'; 
-END IF; 
+    set correct = CASE
+		WHEN Размер >= 35 AND Размер <= 44 THEN "размер S"
+        WHEN Размер >= 46 AND Размер <= 48 THEN "размер M"
+        WHEN Размер >= 50 AND Размер <= 54 THEN "размер L"
+	END;
 RETURN (correct); 
 END $$; 
 DELIMITER $$ 
-
-SELECT Тип, Цвет AS correct, typeClothes(Тип)
+SELECT  SizeCloth(Размер) AS `size`, `Размер`
 FROM требования;
 
 -- 3
@@ -133,3 +134,15 @@ DELIMITER $$
 
 SELECT Стоимость, Цвет AS correct, newPrice(Стоимость)
 FROM товар;
+
+-- Представление
+
+CREATE VIEW ClientInformation
+AS SELECT *
+FROM посетитель 
+JOIN заказ ON заказ.`id посетителя` = посетитель.id
+JOIN `заказанный товар` ON `заказанный товар`.`id заказа` = заказ.id
+JOIN товар т ON т.id = `заказанный товар`.`id товара`;
+
+SELECT *FROM ClientInformation;
+
