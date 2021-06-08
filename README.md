@@ -24,3 +24,4 @@ ER-диаграмма имеет следующий вид:
 
 ## Код четвертой лабораторной работы находится ["Тут"](https://github.com/sofaglavaa/BData/blob/main/laba_4.sql)
 ## Код пятой лабораторной работы находится ["Тут"](https://github.com/sofaglavaa/BData/blob/main/laba_5.sql)
+## Исполняющие файлы для 6 и 7 лабораторных находятся ["Тут"](https://github.com/sofaglavaa/BData/tree/main/SofaDB67/SofaDB67)
