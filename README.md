@@ -5,7 +5,7 @@
 ER-диаграмма имеет следующий вид:
 ![ER-диаграмма](https://sun9-71.userapi.com/impg/-v6qQlXKjO7w9NtzksdvMQsujTC5ikH7fAYatg/8MPUEGFbcio.jpg?size=1593x815&quality=96&sign=a6e1296f3d045c53e016c7b09f16f38a&type=album)
 
-Протокол лабораторной ["1-ая лабораторная"]()
+Протокол лабораторной ["1-ая лабораторная"](https://github.com/sofaglavaa/BData/blob/main/Лабораторная%20работа%20№1.docx)
 
 ## Вторая лабораторная работа 
 1. Задание на данную лабораторную было следующее:
