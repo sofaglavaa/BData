@@ -29,6 +29,6 @@ ER-диаграмма имеет следующий вид:
 А БД одногруппника выполнялось с помощью SQL-скриптов и код представлен в данном файле: ["Физическое проектирование базы данных"](https://github.com/sofaglavaa/BData/blob/main/Laba_3.sql)
 
 ## Код четвертой лабораторной работы находится ["Тут"](https://github.com/sofaglavaa/BData/blob/main/laba_4.sql) и протокол ["Тут"](https://github.com/sofaglavaa/BData/blob/main/Лабораторная%20работа%20№4.docx)
-## Код пятой лабораторной работы находится ["Тут"](https://github.com/sofaglavaa/BData/blob/main/laba_5.sql)
+## Код пятой лабораторной работы находится ["Тут"](https://github.com/sofaglavaa/BData/blob/main/laba_5.sql) и протокол ["Тут"](https://github.com/sofaglavaa/BData/blob/main/Лабораторная%20работа%20№5.docx)
 # Исполняющие файлы для 6 и 7 лабораторных находятся ["Тут"](https://github.com/sofaglavaa/BData/tree/main/Лабораторная%20№6%20и%20№7/SofaDB67/SofaDB67)
 ## 6-ая лабораторная работа выполнялась сразу с интерфейсом, удобным для пользователя, поэтому проект 6 и 7 лабораторной находятся в одном файле и программе
